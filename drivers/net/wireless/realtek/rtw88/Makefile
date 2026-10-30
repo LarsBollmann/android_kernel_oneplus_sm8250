@@ -2,6 +2,8 @@
 
 EXTRA_CFLAGS += -Wno-implicit-int
 ccflags-y += -O2 -std=gnu11 -Wno-declaration-after-statement
+# Avoid clashing with rtl8812au when both are built-in
+ccflags-y += -Drtw_regd_init=rtw88_regd_init -Drtw_sec_write_cam=rtw88_sec_write_cam
 
 obj-$(CONFIG_RTW88_CORE)	+= rtw88_core.o
 rtw88_core-y += main.o \
